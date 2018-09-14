@@ -1,0 +1,147 @@
+<!-- login page -->
+<link rel="stylesheet" href="css/w.css">
+<link href="css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/budx.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="js/budx.js"></script>
+<script type="text/javascript">
+	var login = function(loginForm){
+		location.replace("dashboard.html");
+/*	if(loginForm.email =="hitesh390@gmail.com"){
+		if(loginForm.password == "hitesh"){
+			
+		}
+	}*/
+	
+	}
+
+</script>
+
+<!-- Whole html Start-->
+<div>
+
+<div class="w3-container backImg w3-black">
+<span class="w3-left"></span>
+   <h1 align="center"><a href="home.html" class="effect-shine">BUDX Users Section</a></h1>
+</div>
+<div class="tabsWindow w3-center">
+	
+ <a href="resumeform.html" class="w3-bar-item w3-button w3-hover-none w3-hover-text-green w3-text-blue w3-border-blue w3-border-bottom w3-hover-border-green">Jobseekers</a><a href="resumeform.html" class="w3-bar-item w3-button w3-hover-none w3-hover-text-green w3-text-orange w3-border-orange w3-border-bottom w3-hover-border-green">Employers</a>
+
+</div>
+
+<!-- Jobseeker Form -->
+<div class="w3-container">
+	Jobseekers
+	<a href="resumeform.html" class="w3-bar-item w3-button w3-hover-none w3-hover-text-green w3-text-blue w3-border-blue w3-border-bottom w3-hover-border-green">Freshers</a><a href="resumeform.html" class="w3-bar-item w3-button w3-hover-none w3-hover-text-green w3-text-orange w3-border-orange w3-border-bottom w3-hover-border-green">Experienced</a>
+
+
+<div class="w3-container w3-center w3-margin w3-mobile">
+	<!-- <div class="w3-container w3-half w3-card-2"></div> -->
+	<div class="w3-container w3-card-2 w3-animate-left" ng-if="!experiencedFormDisplay">
+		Freshers 
+<!-- 
+Fresher:  Form Displaying 
+Full Name:
+Email Id:
+Mobile No:
+Industry Type : 
+Upload Resume : -->
+	<form ng-submit="fresher(fresherForm)" name="fresherForm">
+		<span class="w3-text-red"> All feilds are mandatory*</span>
+		<!-- <label for="name">Full Name:</label> -->
+		<input type="text" name="name" class="w3-input w3-margin" placeholder="Full Name" ng-model="name" required="required">
+		<!-- <label for="name">Email Id</label> -->
+		<input type="email" name="email" class="w3-input w3-margin" placeholder="Email" ng-model="email" required="required">
+		<!-- <label for="name">Mobile Number</label> -->
+		<input type="number" name="mobileno" class="w3-input w3-margin" placeholder="Mobile Number" ng-model="mobileno" required="required">
+		<!-- <label for="name">Industry Type</label> -->
+		<input type="text" name="industry" class="w3-input w3-margin" placeholder="Industry type" ng-model="industry" required="required">
+		<!-- <label for="name">Upload your Resume</label> -->
+		<input type="file" name="resume" class="w3-input w3-margin" placeholder="Choose a file" ng-model="file" required="required">
+		
+		<input type="submit" name="register" value="Register" class="w3-button w3-hover-green w3-round-xxlarge w3-border w3-green">
+	</form>
+	</div>
+
+<!-- 
+Full Name:
+Year of Experience:
+Current Company: 
+Email Id:
+Mobile No : 
+Job Designation:
+Industry Type : 
+Current CTC (in Lacs) : 
+Current Job Location : 
+Upload Resume : 
+ -->
+	<div class="w3-container w3-card-2 w3-animate-left" ng-if="experiencedFormDisplay">
+	Experienced
+	<form ng-submit="experienced(experiencedForm)" name="experiencedForm">
+		<span class="w3-text-red"> All feilds are mandatory*</span>
+		<!-- <label for="name">Full Name:</label> -->
+		<input type="text" name="name" class="w3-input w3-margin" placeholder="Full Name" ng-model="name" required="required">
+		<!-- <label for="name">Mobile Number</label> -->
+		<input type="number" name="yearsofexperience" class="w3-input w3-margin" placeholder="yearsofexperience" ng-model="yearsofexperience" required="required">
+		<!-- <label for="name">Full Name:</label> -->
+		<input type="text" name="crntcompany" class="w3-input w3-margin" placeholder="Current Company" ng-model="crntcompany" required="required">
+		<!-- <label for="name">Email Id</label> -->
+		<input type="email" name="email" class="w3-input w3-margin" placeholder="Email" ng-model="email" required="required">
+		<!-- <label for="name">Mobile Number</label> -->
+		<input type="number" name="mobileno" class="w3-input w3-margin" placeholder="Mobile Number" ng-model="mobileno" required="required">
+		<!-- <label for="name">Industry Type</label> -->
+		<input type="text" name="designation" class="w3-input w3-margin" placeholder="designation" ng-model="designation" required="required">
+		<!-- <label for="name">Industry Type</label> -->
+		<input type="text" name="industry" class="w3-input w3-margin" placeholder="Industry type" ng-model="industry" required="required">
+		<!-- <label for="name">Current CTC (in Lacs)</label> -->
+		<input type="text" name="ctc" class="w3-input w3-margin" placeholder="Current CTC (in Lacs)" ng-model="ctc" required="required">
+		<!-- <label for="name">Upload your Resume</label> -->
+		<input type="file" name="resume" class="w3-input w3-margin" placeholder="Choose a file" ng-model="file" required="required">
+		
+		<input type="submit" name="register" value="Register" class="w3-button w3-hover-green w3-round-xxlarge w3-border w3-green">
+	</form>
+	</div>
+
+</div>
+</div>
+
+<!-- Employer -->
+<div class="w3-container w3-center w3-margin w3-mobile">
+	<!-- <div class="w3-container w3-half w3-card-2"></div> -->
+	<div class="w3-container w3-card-2 w3-animate-left" ng-if="!experiencedFormDisplay">
+Employer
+<!-- 
+Comapany Name:
+Designation : 
+Telephone no : 
+Mobile No :
+Official Email Id: 
+Office Address:
+ Employee Requirements:
+ -->
+	<form ng-submit="employer(employerForm)" name="employerForm">
+		<span class="w3-text-red"> All feilds are mandatory*</span>
+		<!-- <label for="name">Comapany Name:</label> -->
+		<input type="text" name="name" class="w3-input w3-margin" placeholder="Company Name" ng-model="name" required="required">
+		<!-- <label for="name">Industry Type</label> -->
+		<input type="text" name="designation" class="w3-input w3-margin" placeholder="designation" ng-model="designation" required="required">
+		<!-- <label for="name">Telephone Number</label> -->
+		<input type="number" name="telno" class="w3-input w3-margin" placeholder="Telephone Number" ng-model="telno" required="required">
+		<!-- <label for="name">Mobile Number</label> -->
+		<input type="number" name="mobileno" class="w3-input w3-margin" placeholder="Mobile Number" ng-model="mobileno" required="required">
+		<!-- <label for="name">Email Id</label> -->
+		<input type="email" name="email" class="w3-input w3-margin" placeholder="Official Email ID" ng-model="email" required="required">
+		<!-- <label for="name">Industry Type</label> -->
+		<input type="text" name="address" class="w3-input w3-margin" placeholder="Official Address" ng-model="address" required="required">
+		<!-- <label for="name">Industry Type</label> -->
+		<input type="text" name="requirements" class="w3-input w3-margin" placeholder="Employee Requirements (Comma Seperated)" ng-model="requirements" required="required">
+		<input type="submit" name="register" value="Register" class="w3-button w3-hover-green w3-round-xxlarge w3-border w3-green">
+	</form>
+	</div>
+
+</div>
+
+
+</div>
+<!-- Whole html close
