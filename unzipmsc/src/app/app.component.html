@@ -1,0 +1,92 @@
+<!-- s<h1>Hello World</h1> -->
+<!-- <div class="pulse" style="width: 150px;">Hello world!</div> -->
+<!-- <div class="imgWithDivsAligned" [ngStyle]="{position: 'relative'}">
+    <div [class]="['faceBorder']" [ngStyle]="{'top': faceTopP}">
+
+    </div>
+    <img src="../assets/img/facepaint.png">
+</div> -->
+
+
+<div class="w3-container w3-bar w3-padding  w3-black topHeader">
+    <router-outlet name="header">Speech Recognition and Synthesis with face detection
+
+        <table class="w3-table-all">
+            <thead>
+                <tr class="w3-light-grey w3-hover-blue">
+
+                    <th>Pages </th>
+                    <th>Content</th>
+                </tr>
+            </thead>
+            <tr class="w3-hover-green">
+                <td> <a [routerLink]="['/hello']">Home </a> </td>
+                <td>Index(This page) </td>
+            </tr>
+
+            <tr class="w3-hover-green">
+                <td> <a [routerLink]="['/first']">First </a> </td>
+                <td> Speech Recognition -STT </td>
+            </tr>
+            <tr class="w3-hover-green">
+                <td> <a [routerLink]="['/second']">Second</a> </td>
+                <td> Speech Recognized Color changer </td>
+            </tr>
+            <tr class="w3-hover-green">
+                <td> <a [routerLink]="['/third']">Third </a> </td>
+                <td>Speech Systhesis -TTS using textbox</td>
+            </tr>
+            <tr class="w3-hover-green">
+                <td> <a [routerLink]="['/fourth']">Fourth</a> </td>
+                <td>Face Detection </td>
+            </tr>
+            <tr class="w3-hover-green">
+                <td> <a [routerLink]="['/fifth']">Fifth </a> </td>
+                <td>Welcoming the user (Speech Synthesis using detected Face )</td>
+            </tr>
+            <!-- <tr class="w3-hover-green">
+                <td> <a [routerLink]="['/sixth']">Sixth </a> </td>
+                <td>Creating Elements using Speech </td>
+            </tr>
+            <tr class="w3-hover-green">
+                <td> <a [routerLink]="['/seventh']">Seventh </a> </td>
+                <td> Whole Together </td>
+            </tr> -->
+            <tr class="w3-hover-green">
+                <td> <a [routerLink]="['/sixth']">Sixth </a> </td>
+                <td> Future Scope 
+                </td>
+            </tr>
+        </table>
+    </router-outlet>
+    <!-- <router-outlet name="header">Trying Pagination </router-outlet> -->
+</div>
+<!-- <div>
+    <router-outlet name="nav">Nav</router-outlet>
+</div> -->
+<div>
+    <router-outlet>
+
+    </router-outlet>
+
+</div>
+<!-- <div>
+    <router-outlet name="footer">Footer</router-outlet>
+</div>
+
+<div class="w3-modal">
+    <router-outlet name="popup">Popup</router-outlet>
+</div> -->
+
+
+<!--
+        "{'left':rectangle.x , 'top': rectangle.y , 'height':rectangle.height , 'width': rectangle.width}" -->
+
+
+
+<!-- <img [src]="salmanImg"  >  
+            <div class="faceRecogDiv" *ngFor="let rectangle of rectangleItemsFaces" [style.left.px]="rectangle.x - 5" [style.top.px]="rectangle.y + 5"
+                [style.height.px]="rectangle.height + 10" [style.width.px]=" rectangle.width+10"> {{MessageToDisplay}}
+               
+            </div>
+        </div>  -->

@@ -1,0 +1,36 @@
+<h2>Text to speech
+</h2>
+<!-- {{languagesSupported}} -->
+<div class="w3-container">
+    <!-- <span > ----</span> -->
+    <table class="w3-table-all">
+        <thead>
+            <tr class="w3-light-grey w3-hover-blue">
+                <th>Voice URI </th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tr class="w3-hover-green" *ngFor="let item of languagesSupported.voices">
+            <td> {{item.voiceURI}}</td>
+            <td> {{item.name}} </td>
+        </tr>
+
+    </table>
+</div>
+<div>
+    <label for="textInput">Enter the text to be read:</label>
+    <input type="text" name="textInput" id="text1" [(ngModel)]="textToSpeak">
+    <button (click)="readText()">Read IT!</button>
+</div>
+<br>
+<div>
+    <div>
+        <textarea id="text" style="width: 500px; height: 300px" [(ngModel)]="textToSpeak">Hello, how are you today ?</textarea>
+    <div>
+
+    <button id="play"> Play </button>
+    <button id="pause"> Pause </button>
+    <button id="resume"> Resume </button>
+
+    
+</div>

@@ -1,0 +1,163 @@
+steps for the project angular project created using routing
+
+w3css added
+tracking js
+
+https://github.com/eduardolundgren/tracking.js/issues/296
+
+https://stackoverflow.com/questions/40417613/how-to-capture-image-after-face-detection-in-tracking-js
+https://stackoverflow.com/questions/51578420/importing-tracking-js-into-an-angular-project
+
+angular componenetgs
+
+https://angular.io/guide/elements
+
+https://medium.com/@DenysVuika/dynamic-content-in-angular-2-3c85023d9c36
+
+https://blog.angularindepth.com/here-is-what-you-need-to-know-about-dynamic-components-in-angular-ac1e96167f9e
+https://medium.com/all-is-web/angular-5-creating-new-component-c6c5236f8024
+npm install w3-css
+npm install speak-tts
+for json server =
+https://medium.com/codingthesmartway-com-blog/create-a-rest-api-with-json-server-36da8680136d
+
+For the speech Recognition
+
+https://www.freecodecamp.org/news/how-to-build-a-simple-speech-recognition-app-a65860da6108/
+
+
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
+
+https://github.com/kamiazya/ngx-speech-recognition
+
+https://auth0.com/blog/rxjs-advanced-tutorial-with-angular-web-speech-part-1/
+
+http://tp00027589:May%402019@idccfm.axisb.com:1050/
+
+https://codepen.io/digitalbs/pen/Hqbgc
+
+https://codesandbox.io/s/rmloxx60q4
+
+index.js
+
+import Speech from "speak-tts";
+
+const _addVoicesList = voices => {
+  const list = window.document.createElement("div");
+  let html =
+    '<h2>Available Voices</h2><select id="languages"><option value="">autodetect language</option>';
+  voices.forEach(voice => {
+    html += `<option value="${voice.lang}" data-name="${voice.name}">${
+      voice.name
+    } (${voice.lang})</option>`;
+  });
+  list.innerHTML = html;
+  window.document.body.appendChild(list);
+};
+
+function _init() {
+  const speech = new Speech();
+  speech
+    .init({
+      volume: 0.5,
+      lang: "en-GB",
+      rate: 1,
+      pitch: 1,
+      //'voice':'Google UK English Male',
+      //'splitSentences': false,
+      listeners: {
+        onvoiceschanged: voices => {
+          console.log("Voices changed", voices);
+        }
+      }
+    })
+    .then(data => {
+      console.log("Speech is ready", data);
+      _addVoicesList(data.voices);
+      _prepareSpeakButton(speech);
+    })
+    .catch(e => {
+      console.error("An error occured while initializing : ", e);
+    });
+  const text = speech.hasBrowserSupport()
+    ? "Hurray, your browser supports speech synthesis"
+    : "Your browser does NOT support speech synthesis. Try using Chrome of Safari instead !";
+  document.getElementById("support").innerHTML = text;
+}
+
+function _prepareSpeakButton(speech) {
+  const speakButton = document.getElementById("play");
+  const pauseButton = document.getElementById("pause");
+  const resumeButton = document.getElementById("resume");
+  const textarea = document.getElementById("text");
+  const languages = document.getElementById("languages");
+  speakButton.addEventListener("click", () => {
+    const language = languages.value;
+    const voice = languages.options[languages.selectedIndex].dataset.name;
+    if (language) speech.setLanguage(languages.value);
+    if (voice) speech.setVoice(voice);
+    speech
+      .speak({
+        text: textarea.value,
+        queue: false,
+        listeners: {
+          onstart: () => {
+            console.log("Start utterance");
+          },
+          onend: () => {
+            console.log("End utterance");
+          },
+          onresume: () => {
+            console.log("Resume utterance");
+          },
+          onboundary: event => {
+            console.log(
+              event.name +
+                " boundary reached after " +
+                event.elapsedTime +
+                " milliseconds."
+            );
+          }
+        }
+      })
+      .then(data => {
+        console.log("Success !", data);
+      })
+      .catch(e => {
+        console.error("An error occurred :", e);
+      });
+  });
+
+  pauseButton.addEventListener("click", () => {
+    speech.pause();
+  });
+
+  resumeButton.addEventListener("click", () => {
+    speech.resume();
+  });
+}
+
+_init();
+
+
+
+
+index.html
+
+
+
+
+	<h2 id="support"></h2>
+
+	<div>
+		<textarea id="text" style="width: 500px; height: 300px">Hello, how are you today ?</textarea>
+		<div>
+
+			<button id="play"> Play </button>
+			<button id="pause"> Pause </button>
+			<button id="resume"> Resume </button>
+
+	<script src="src/index.js"></script>
+</body>
+
+</html>

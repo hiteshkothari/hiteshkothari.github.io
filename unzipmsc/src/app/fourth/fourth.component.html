@@ -1,0 +1,20 @@
+<div class="  w3-animate-bottom">
+        <div class="mainDiv">
+            
+            <!-- Add the image here later on for the marking of the image on the face  -->
+            <!-- <img src="https://qph.fs.quoracdn.net/main-raw-160501382-mdvmmzvoykkqgacmryjvscblzwbdytde.jpeg"  >  -->
+            <img [src]="salmanImg"  > 
+            <img [src]="imgURL" height="194px" > 
+            <!-- <img [src]="salmanImg"  >  -->
+                <!-- Getting this values from the face Recognition to try on multiple faces -->
+                <!-- {total: 11, width: 104, height: 104, x: 48, y: 34} -->
+                <div class="faceRecogDiv w3-animte-fade" *ngFor="let rectangle of rectangleItemsFaces" [style.left.px]="rectangle.x - 5" [style.top.px]="rectangle.y + 5"
+                    [style.height.px]="rectangle.height + 10" [style.width.px]=" rectangle.width+10"> {{MessageToDisplay}}
+                    <!-- {{ '{ left' + rectangle.x +  'top' +  rectangle.y +  'height' + rectangle.height +  'width' + rectangle.width +  '}' }} -->
+                </div>
+    
+                
+            </div>
+    
+            
+    </div>

@@ -1,0 +1,47 @@
+/* Add application styles & imports to this file! */
+@import url("assets/css/w3.css");
+/* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0px;
+   
+}
+
+/* For All Header so in Global Style Sheet  */
+.topHeader{
+   /* top:0; */
+   /* position: absolute; */
+
+}
+/* *{
+    font-size: 8px !important;
+} */
+p {
+  font-family: Lato;
+}
+
+
+
+.faceBorder {
+    position: fixed;
+    top: 10;
+    left: 10;
+    height: 15px;
+    width: 15px;
+    border: 2px solid black;
+    /* {"total":11,"width":104,"height":104,"x":48,"y":34} */
+}
+
+.mainDiv {
+    position: relative;
+    /* height: 300px; */
+    /* width: 300px; */
+    /* align-items: center; */
+    /* margin: 10px; */
+    border: 1px solid black;
+}
+
+.faceRecogDiv {
+    position: absolute;
+    border: 2px solid green;
+    color: white ;
+}
