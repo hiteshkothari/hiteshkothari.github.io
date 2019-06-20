@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+
+  <meta charset="utf-8">
+  <title>tracking.js - face with camera</title> 
+<script src="tracking-min.js"></script>
+  <script src="face-min.js"></script>
+  <script src="/msc3/assets/indexfiles/cameraFace/tracking-min.js"></script>
+  <script src="/msc3/assets/indexfiles/cameraFace/face-min.js"></script>
+
+  <style>
+  video, canvas {
+    margin-left: 230px;
+    margin-top: 120px;
+    position: absolute;
+  }
+  </style>
+  
+  
+
+</head>
+<body>
+<!--
+	Ideally these elements aren't created until it's confirmed that the 
+	client supports video/camera, but for the sake of illustrating the 
+	elements involved, they are created with markup (not JavaScript)
+-->
+<video id="video" width="640" height="480" autoplay></video>
+
+
+<canvas id="canvas" width="640" height="480"></canvas>
+
+<script>
+
+	  
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+var video = document.getElementById('video');
+// Grab elements, create settings, etc.
+//var video = document.getElementById('video');
+
+// Get access to the camera!
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Not adding `{ audio: true }` since we only want video now
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        //video.src = window.URL.createObjectURL(stream);
+        video.srcObject = stream;
+        video.play();
+    });
+}
+
+/* Legacy code below: getUserMedia 
+else if(navigator.getUserMedia) { // Standard
+    navigator.getUserMedia({ video: true }, function(stream) {
+        video.src = stream;
+        video.play();
+    }, errBack);
+} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+    navigator.webkitGetUserMedia({ video: true }, function(stream){
+        video.src = window.webkitURL.createObjectURL(stream);
+        video.play();
+    }, errBack);
+} else if(navigator.mozGetUserMedia) { // Mozilla-prefixed
+    navigator.mozGetUserMedia({ video: true }, function(stream){
+        video.srcObject = stream;
+        video.play();
+    }, errBack);
+}
+*/
+
+// Elements for taking the snapshot
+
+
+// Trigger photo take
+//document.getElementById("snap").addEventListener("click", function() {
+//console.log("createing image");
+//	context.drawImage(video, 0, 0, 640, 480);
+//});
+
+
+
+
+
+
+
+window.onload = function() {
+    
+      var tracker = new tracking.ObjectTracker('face');
+      tracker.setInitialScale(4);
+      tracker.setStepSize(2);
+      tracker.setEdgesDensity(0.1);
+      tracking.track('#video', tracker, { camera: true });
+      tracker.on('track', function(event) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        event.data.forEach(function(rect) {
+          context.strokeStyle = '#87cefa';
+		  context.lineWidth = 10;
+          context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+        //  context.font = '11px Helvetica';
+        //  context.fillStyle = "#fff";
+       //   context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
+       //   context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+        });
+      });
+     
+    };
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

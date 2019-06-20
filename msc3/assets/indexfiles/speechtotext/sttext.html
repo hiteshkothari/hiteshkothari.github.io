@@ -1,0 +1,79 @@
+<body>
+
+
+<p class="output"><em> Displaying Output {{diagnostic}}</em></p>
+  <button class="startButton" id="startButton">Start Listening</button>
+  <button class="stopButton" id="stopButton">Stop Listening</button>
+  
+  
+</body>
+
+
+<script>
+
+ var SpeechRecognition = SpeechRecognition|| webkitSpeechRecognition ;
+    // var SpeechGrammarList = SpeechGrammarList ||  window.webkitSpeechGrammarList;
+    // var SpeechRecognitionEvent = SpeechRecognitionEvent ||  window.webkitSpeechRecognitionEvent;
+
+    // var colors = [];
+    // var grammar = '#JSGF V1.0; grammar colors; public <color> = ' + colors.join(' | ') + ' ;'
+
+    var recognition = new SpeechRecognition();
+    // var speechRecognitionList = new SpeechGrammarList();
+
+    // speechRecognitionList.addFromString(grammar, 1);
+
+    // recognition.grammars = speechRecognitionList;
+    //recognition.continuous = false;
+    // recognition.lang = 'en-US';
+    // recognition.interimResults = false;
+    // recognition.maxAlternatives = 1;
+
+    var diagnostic = document.querySelector('.output');
+    // var bg = document.querySelector('html');
+    // hints = document.querySelector('.hints');
+    // hints = document.querySelector('.startButton');
+
+    // var colorHTML = [];
+    // colors.forEach(function (color, index) {
+    //   console.log(color, index);
+    //   // colorHTML += '<span class="w3-' + color + ';"> ' + color + ' </span>';
+    //   colorHTML.push(color);
+    // });
+    // this.hints = colorHTML;
+   // setTimeout(() => {
+
+      var button = document.getElementById('startButton');
+      button.onclick = function () {
+        recognition.start();
+        console.log('Ready ');
+      }
+      var button1 = document.getElementById('stopButton');
+      button1.onclick = function () {
+        recognition.stop();
+        console.log('Stoping .');
+      }
+   // }, 5000)
+
+
+    recognition.onresult = (event) => {
+      var lastIndex = event.results.length - 1;
+      var result = event.results[lastIndex][0].transcript;
+      diagnostic.innerHTML = result;
+      // bg.style.backgroundColor = color;
+      console.log('Confidence: ' + event.results[0][0].confidence);
+    }
+
+    recognition.onspeechend = function () {
+      recognition.stop();
+    }
+    recognition.onnomatch = (event) => {
+	
+      diagnostic.innerHTML = 'I didnt recognise that .';
+    }
+    recognition.onerror = (event) => {
+      diagnostic.innerHTML = 'Error occurred in recognition: ' + event.error;
+    }
+	
+	
+	</script>
